@@ -26,7 +26,7 @@ def login():
     return None
 
 def signup():
-    f=open("userdata.csv",'r',newline='\n')
+    f=open("userdata.csv",'a+',newline='\n')
     ro=csv.reader(f)
     L=[]
     for i in ro:
@@ -82,7 +82,7 @@ def accessoldfile(username):
         act=int(input("Enter Your action(1,2,3,4 or 5):"))
         if act == 1:
             f=open("userdata.csv",'a',newline='\n')
-            ro=csv.reader()
+            ro=csv.reader(f)
             print("--------Your Files are as follows---------")
             for i in ro:
                 if i[0]==username:
@@ -93,7 +93,8 @@ def accessoldfile(username):
             name=input("Enter name of the file:")
             f=open("{}.txt".format(name),'a')
             data=input("Enter Data you want add in File:\n")
-            f.write(data)
+            data+="\n"
+            f.write(data2)   
             f.close()
 
         elif act==3:
